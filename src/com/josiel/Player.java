@@ -39,10 +39,6 @@ public class Player {
         this.grid = grid;
     }
 
-    public char[][] getEnemyGrid() {
-        return enemyGrid;
-    }
-
     public void setEnemyGrid(char[][] enemyGrid) {
         this.enemyGrid = enemyGrid;
     }
@@ -51,16 +47,8 @@ public class Player {
         return availableSpots;
     }
 
-    public void setAvailableSpots(List<String> availableSpots) {
-        this.availableSpots = availableSpots;
-    }
-
     public int getHits() {
         return hits;
-    }
-
-    public void setHits(int hits) {
-        this.hits = hits;
     }
 
     public void play() {
