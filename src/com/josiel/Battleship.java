@@ -16,36 +16,8 @@ public class Battleship {
         playerTurn = player;
     }
 
-    public Player getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
-    public AI getAi() {
-        return ai;
-    }
-
-    public void setAi(AI ai) {
-        this.ai = ai;
-    }
-
     public String getWinner() {
         return winner;
-    }
-
-    public void setWinner(String winner) {
-        this.winner = winner;
-    }
-
-    public Player getPlayerTurn() {
-        return playerTurn;
-    }
-
-    public void setPlayerTurn(Player playerTurn) {
-        this.playerTurn = playerTurn;
     }
 
     public void playTurn() {
