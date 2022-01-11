@@ -62,8 +62,12 @@ public class Player {
         }
 
         BattleshipApplication.clearScreen();
-        System.out.println(insertSpot("Shoot", spot));
+
+        String AIResponse = insertSpot("Shoot", spot);
+
         printGrid();
+        System.out.println(AIResponse);
+        System.out.println();
     }
 
     public void printGrid() {
@@ -90,6 +94,7 @@ public class Player {
         }
         System.out.println();
         System.out.println("---------------------------------------------");
+        System.out.println();
     }
 
     protected void askName() {
@@ -98,8 +103,11 @@ public class Player {
     }
 
     protected void setGridPositions() {
-        System.out.println("Agora você deverá posicionar os 10 submarinos.");
         for (int i = 0; i < 10; i++) {
+            BattleshipApplication.clearScreen();
+            printGrid();
+
+            System.out.println("Agora você deverá posicionar os 10 submarinos.");
             System.out.println((i+1) + "° submarino.");
             String spot = askSpot();
 
@@ -109,9 +117,10 @@ public class Player {
             }
 
             insertSpot("Position", spot);
-            BattleshipApplication.clearScreen();
-            printGrid();
         }
+
+        BattleshipApplication.clearScreen();
+        printGrid();
     }
 
     private void setInitialAvailableSpots() {
@@ -152,14 +161,14 @@ public class Player {
                     mark = 'X';
                 }
                 hits++;
-                message = "Acertou! Meu submarino está afundando!";
+                message = "AI: \"Acertou! Meu submarino está afundando!\"";
             } else {
                 if (isFreeSpot(spot)) {
                     mark = '-';
                 } else {
                     mark = 'n';
                 }
-                message = "Errou! O disparo foi direto para a água!";
+                message = "AI: \"Errou! O disparo foi direto para a água!\"";
             }
             availableSpots.remove(spot);
         }

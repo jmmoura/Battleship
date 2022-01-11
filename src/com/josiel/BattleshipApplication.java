@@ -29,8 +29,8 @@ public class BattleshipApplication {
 
             game.printGrids();
 
-            System.out.println("Gostaria de jogar novamente? Se você quer, insira S, "
-                    + "senão, insira qualquer outra coisa: ");
+            System.out.println("Gostaria de jogar novamente? Se você quer, insira S. "
+                    + "Senão, insira qualquer outra coisa: ");
             char answer = scanner.next().charAt(0);
             playerWantToPlay = Character.toUpperCase(answer) == 'S';
         }
