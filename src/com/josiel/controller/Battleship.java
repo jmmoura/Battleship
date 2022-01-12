@@ -1,4 +1,7 @@
-package com.josiel;
+package com.josiel.controller;
+
+import com.josiel.domain.AI;
+import com.josiel.domain.Player;
 
 public class Battleship {
     private Player player;
@@ -6,9 +9,10 @@ public class Battleship {
     private String winner;
     private Player playerTurn;
 
-    public Battleship () {
-        player = new Player();
+    public Battleship (Player player) {
+        this.player = player;
         ai = new AI();
+        ai.setGridPositions();
 
         this.player.setEnemyGrid(ai.getGrid());
         ai.setEnemyGrid(this.player.getGrid());
@@ -46,20 +50,6 @@ public class Battleship {
 
     public void setPlayerTurn(Player playerTurn) {
         this.playerTurn = playerTurn;
-    }
-
-    public void playTurn() {
-        playerTurn.play();
-        playerTurn = playerTurn.getClass() == ai.getClass() ? player : ai;
-    }
-
-    public void printGrids() {
-        System.out.println("Tabuleiro do " + player.getName() + ": ");
-        player.printGrid();
-
-        System.out.println();
-        System.out.println("Tabuleiro da AI: ");
-        ai.printGrid();
     }
 
     public boolean isThereAWinner() {
