@@ -3,6 +3,8 @@ package com.josiel.controller;
 import com.josiel.domain.AI;
 import com.josiel.domain.Player;
 
+import java.util.Random;
+
 public class Battleship {
     private Player player;
     private AI ai;
@@ -17,7 +19,10 @@ public class Battleship {
         this.player.setEnemyGrid(ai.getGrid());
         ai.setEnemyGrid(this.player.getGrid());
 
-        playerTurn = player;
+        Random generator = new Random();
+        int index = generator.nextInt(2);
+
+        playerTurn = index == 0 ? player : ai;
     }
 
     public Player getPlayer() {
