@@ -44,6 +44,8 @@ public class Grid {
         int row = getRowIndex(spot.charAt(0));
         int column = getColumnIndex(spot.charAt(1));
 
+        availableSpots.remove(spot);
+
         if (enemyGrid.isAHit(row, column)) {
             if (isFreeSpot(spot)) {
                 spots[row][column] = '*';
@@ -58,8 +60,6 @@ public class Grid {
         } else {
             spots[row][column] = 'n';
         }
-
-        availableSpots.remove(spot);
 
         return false;
     }
