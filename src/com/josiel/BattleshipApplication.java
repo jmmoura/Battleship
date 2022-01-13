@@ -1,9 +1,6 @@
 package com.josiel;
 
-import com.josiel.controller.Battleship;
 import com.josiel.view.BattleshipView;
-
-import java.util.Scanner;
 
 public class BattleshipApplication {
 
