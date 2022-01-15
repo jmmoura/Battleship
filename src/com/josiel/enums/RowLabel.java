@@ -1,4 +1,4 @@
-package com.josiel;
+package com.josiel.enums;
 
 public enum RowLabel {
     A,
