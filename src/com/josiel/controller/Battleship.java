@@ -2,6 +2,9 @@ package com.josiel.controller;
 
 import com.josiel.domain.AI;
 import com.josiel.domain.Player;
+import com.josiel.view.BattleshipView;
+import com.josiel.view.PlayerView;
+import com.josiel.view.ScreenUtil;
 
 import java.util.Random;
 
@@ -10,20 +13,8 @@ public class Battleship {
     private AI ai;
     private String winner;
     private Player playerTurn;
-
-    public Battleship (Player player) {
-        this.player = player;
-        ai = new AI();
-        ai.setGridPositions();
-
-        this.player.setEnemyGrid(ai.getGrid());
-        ai.setEnemyGrid(this.player.getGrid());
-
-        Random generator = new Random();
-        int index = generator.nextInt(2);
-
-        playerTurn = index == 0 ? player : ai;
-    }
+    private BattleshipView battleshipView = new BattleshipView();;
+    private PlayerView playerView = new PlayerView();
 
     public Player getPlayer() {
         return player;
@@ -69,5 +60,54 @@ public class Battleship {
         }
 
         return false;
+    }
+
+    public void start() {
+        boolean playerWantToPlay = true;
+
+        while (playerWantToPlay) {
+
+            ScreenUtil.clearScreen();
+            battleshipView.showHeader();
+            battleshipView.showInitialScreen();
+            battleshipView.addPlayer();
+            player = battleshipView.getPlayer();
+
+            ai = new AI();
+            ai.setGridPositions();
+
+            player.setEnemyGrid(ai.getGrid());
+            ai.setEnemyGrid(player.getGrid());
+
+            Random generator = new Random();
+            int index = generator.nextInt(2);
+
+            playerTurn = index == 0 ? player : ai;
+
+            battleshipView.setSubmarinesPositions();
+
+            while (!isThereAWinner()) {
+                if (getPlayerTurn().getClass() == AI.class) {
+                    getAi().play();
+                    setPlayerTurn(getPlayer());
+                } else {
+                    ScreenUtil.clearScreen();
+
+                    battleshipView.showHeader();
+                    battleshipView.getPlayerView().printGrid();
+                    System.out.println(battleshipView.getAiResponse());
+                    System.out.println();
+                    battleshipView.play();
+                    setPlayerTurn(getAi());
+                }
+            }
+
+            ScreenUtil.clearScreen();
+            battleshipView.showHeader();
+            battleshipView.showWinner(winner);
+            battleshipView.printGrids(player, ai);
+
+            playerWantToPlay = battleshipView.getPlayerView().askToPlayAgain();
+        }
     }
 }

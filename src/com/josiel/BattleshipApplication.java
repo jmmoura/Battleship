@@ -1,12 +1,12 @@
 package com.josiel;
 
-import com.josiel.view.BattleshipView;
+import com.josiel.controller.Battleship;
 
 public class BattleshipApplication {
 
     public static void main(String[] args) {
-        BattleshipView battleshipView = new BattleshipView();
+        Battleship game = new Battleship();
 
-        battleshipView.show();
+        game.start();
     }
 }

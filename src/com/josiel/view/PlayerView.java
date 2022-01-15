@@ -13,7 +13,7 @@ public class PlayerView {
         scanner = new Scanner(System.in);
     }
 
-    protected void askName() {
+    public void askName() {
         System.out.println("Informe o seu nome: ");
         String name = scanner.nextLine();
 
@@ -46,10 +46,10 @@ public class PlayerView {
 
         if (isAHit) {
             player.setHits(player.getHits()+1);
-            return "AI: \"Acertou! Meu submarino está afundando!\"";
+            return "IA: \"Acertou! Meu submarino está afundando!\"";
         }
 
-        return "AI: \"Errou! O disparo foi direto para a água!\"";
+        return "IA: \"Errou! O disparo foi direto para a água!\"";
     }
 
     public boolean askToPlayAgain() {
